@@ -1,0 +1,22 @@
+--Basic config
+require("core.lazy")
+require("core.mappings")
+require("core.colors")
+
+--Plugins config
+require("plugins.dashboard")
+require("plugins.neotree")
+require("plugins.treesitter")
+require("plugins.comment")
+require("plugins.lsp")
+require("plugins.cmp")
+require("plugins.mason")
+require("plugins.telescope")
+require("plugins.nullls")
+require("plugins.autopairs")
+require("plugins.autotag")
+require("plugins.buffline")
+require("plugins.gitsigns")
+require("plugins.lualine")
+require("plugins.toggleterm")
+-- require("plugins.whichkey")
