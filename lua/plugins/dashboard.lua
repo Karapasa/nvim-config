@@ -24,7 +24,7 @@ require('dashboard').setup {
                 key = 'e',
                 keymap = 'SPC e',
                 key_hl = 'Number',
-                action = ':Neotree float'
+                action = ':Neotree toggle'
             }, {
                 icon = '󰈞 ',
                 icon_hl = 'Title',

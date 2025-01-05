@@ -44,6 +44,12 @@ return {
         event = 'VimEnter',
         dependencies = {{'nvim-tree/nvim-web-devicons'}}
    },
+   { 'stevearc/aerial.nvim', opts = {default_direction = "right",},
+      dependencies = {
+         "nvim-treesitter/nvim-treesitter",
+         "nvim-tree/nvim-web-devicons"
+      },
+   },
    {
       "folke/flash.nvim",
       event = "VeryLazy",
@@ -56,6 +62,18 @@ return {
         { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
         { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
         { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      },
+    },
+    {
+      "lukas-reineke/indent-blankline.nvim",
+      main = "ibl",
+      opts = {
+        indent = {char = '▏'},
+        scope = {enabled = false},
+        exclude = {
+          buftypes = { "terminal" },
+          filetypes = { "dashboard" },
+        }
       },
     },
 }

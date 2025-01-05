@@ -1,4 +1,4 @@
-require("toggleterm").setup {open_mapping = [[<c-\>]]}
+require("toggleterm").setup {open_mapping = [[<F10>]]}
 
 function _G.set_terminal_keymaps()
     local opts = {buffer = 0}

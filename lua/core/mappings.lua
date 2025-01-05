@@ -1,5 +1,6 @@
 -- Common
 
+
 vim.keymap.set('n', '<leader>w', ":w<cr>", {desc="Save"}) 
 vim.keymap.set('n', '<leader>q', ":confirm q<cr>", {desc="Quit"}) 
 vim.keymap.set('n', '<leader>Q', ":confirm qall<cr>", {desc="Quit all"}) 
@@ -38,3 +39,26 @@ vim.keymap.set("n", "<leader>gs", function() require("gitsigns").stage_hunk() en
 vim.keymap.set("n", "<leader>gS", function() require("gitsigns").stage_buffer() end, {desc = "Stage Git buffer"})
 vim.keymap.set("n", "<leader>gu", function() require("gitsigns").undo_stage_hunk() end, {desc = "Unstage Git hunk"})
 vim.keymap.set("n", "<leader>gd", function() require("gitsigns").diffthis() end, {desc = "View Git diff"})
+vim.keymap.set("n", "<leader>gg", function()
+                                    local worktree = require("astronvim.utils.git").file_worktree()
+                                    local flags = worktree and (" --work-tree=%s --git-dir=%s"):format(worktree.toplevel, worktree.gitdir) or ""
+                                    utils.toggle_term_cmd("lazygit " .. flags)
+                                  end, {desc = "ToggleTerm lazygit"})
+
+-- SymbolsOutline
+vim.keymap.set("n", "<leader>lS", function() require("aerial").toggle() end, {desc = "Symbols outline"})
+
+local opts = {noremap=true, silent=true}
+
+vim.api.nvim_set_keymap("v", "<", "<gv", opts)
+vim.api.nvim_set_keymap("v", ">", ">gv", opts)
+-- Move text up and down
+vim.api.nvim_set_keymap("v", "<A-j>", ":m .+1<CR>==", opts)
+vim.api.nvim_set_keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+vim.api.nvim_set_keymap("v", "p", '"_dP', opts)
+-- Visual Block --
+-- Move text up and down
+vim.api.nvim_set_keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
+vim.api.nvim_set_keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+vim.api.nvim_set_keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+vim.api.nvim_set_keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
