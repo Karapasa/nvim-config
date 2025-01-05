@@ -4,6 +4,10 @@ import json
 class Test:
     pass
 
+def fuch(a: str):
+    """coment"""
+    return a
+
 
 def func(a:str, b:int) -> str:
     """comment"""
