@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 vim.opt.viewoptions:remove "curdir"
-vim.opt.shortmess:append { s = true, I = true }
 vim.opt.backspace:append { "nostop" }
 
 vim.opt.breakindent = true
@@ -40,6 +39,9 @@ vim.opt.undodir = vim.fn.stdpath("cache") .. "/undo"
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.updatetime = 300 -- faster completion
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program) it is not allowed to be edited
+--
+-- disable nvim intro
+vim.opt.shortmess:append "sI"
 
 vim.opt.showtabline = 2 -- always show tabs
 vim.opt.laststatus = 2 -- hide statusline
@@ -66,7 +68,7 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Indent Settings
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.smartindent = true

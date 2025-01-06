@@ -39,11 +39,6 @@ vim.keymap.set("n", "<leader>gs", function() require("gitsigns").stage_hunk() en
 vim.keymap.set("n", "<leader>gS", function() require("gitsigns").stage_buffer() end, {desc = "Stage Git buffer"})
 vim.keymap.set("n", "<leader>gu", function() require("gitsigns").undo_stage_hunk() end, {desc = "Unstage Git hunk"})
 vim.keymap.set("n", "<leader>gd", function() require("gitsigns").diffthis() end, {desc = "View Git diff"})
-vim.keymap.set("n", "<leader>gg", function()
-                                    local worktree = require("astronvim.utils.git").file_worktree()
-                                    local flags = worktree and (" --work-tree=%s --git-dir=%s"):format(worktree.toplevel, worktree.gitdir) or ""
-                                    utils.toggle_term_cmd("lazygit " .. flags)
-                                  end, {desc = "ToggleTerm lazygit"})
 
 -- SymbolsOutline
 vim.keymap.set("n", "<leader>lS", function() require("aerial").toggle() end, {desc = "Symbols outline"})

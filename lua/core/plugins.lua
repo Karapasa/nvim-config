@@ -32,10 +32,10 @@ return {
    { 'nvim-telescope/telescope.nvim', tag='0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' }
    },
-   { "jose-elias-alvarez/null-ls.nvim" },
+   { "nvimtools/none-ls.nvim" },
    { "nvimdev/dashboard-nvim" },
    {'akinsho/toggleterm.nvim', version = "*", config = true},
-   { "akinsho/bufferline.nvim", dependencies = {'nvim-tree/nvim-web-devicons'}},
+   { "akinsho/bufferline.nvim", dependencies = {'nvim-tree/nvim-web-devicons', 'moll/vim-bbye'}},
    { 'nvim-lualine/lualine.nvim', dependencies = {'nvim-tree/nvim-web-devicons', 'linrongbin16/lsp-progress.nvim'}},
    { "lewis6991/gitsigns.nvim" },
    { "windwp/nvim-autopairs" },
@@ -49,6 +49,22 @@ return {
          "nvim-treesitter/nvim-treesitter",
          "nvim-tree/nvim-web-devicons"
       },
+   },
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+        "LazyGit",
+        "LazyGitConfig",
+        "LazyGitCurrentFile",
+        "LazyGitFilter",
+        "LazyGitFilterCurrentFile",
+    },
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
+    keys = {
+        { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
    },
    {
       "folke/flash.nvim",
@@ -76,4 +92,25 @@ return {
         }
       },
     },
+    {
+      "m4xshen/smartcolumn.nvim",
+      opts = {
+        colorcolumn = "120",
+        disabled_filetypes = { "help" },
+      },
+    },
+  {
+    "brenton-leighton/multiple-cursors.nvim",
+    version = "*",  -- Use the latest tagged version
+    opts = {},  -- This causes the plugin setup function to be called
+    keys = {
+      {"<C-Up>", "<Cmd>MultipleCursorsAddUp<CR>", mode = {"n", "i", "x"}, desc = "Add cursor and move up"},
+      {"<C-Down>", "<Cmd>MultipleCursorsAddDown<CR>", mode = {"n", "i", "x"}, desc = "Add cursor and move down"},
+
+      {"<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>", mode = {"n", "i"}, desc = "Add or remove cursor"},
+
+      {"<Leader>a", "<Cmd>MultipleCursorsAddMatches<CR>", mode = {"n", "x"}, desc = "Add cursors to cword"},
+      {"<Leader>D", "<Cmd>MultipleCursorsJumpNextMatch<CR>", mode = {"n", "x"}, desc = "Jump to next cword"},
+    },
+  },
 }
