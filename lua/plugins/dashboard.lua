@@ -1,12 +1,12 @@
 local function default_header()
     return {
-        '', '', '',
-        ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-        ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-        ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-        ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-        ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-        ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+        '', '', ' ',
+        ' ██████╗ ██╗   ███████╗ ██████╗ ███╗   ██╗███████╗',
+        ' ██╔══██╗██║   ╚══███╔╝██╔═══██╗████╗  ██║██╔════╝',
+        ' ██████╔╝██║     ███╔╝ ██║   ██║██╔██╗ ██║█████╗  ',
+        ' ██╔══██╗██║    ███╔╝  ██║   ██║██║╚██╗██║██╔══╝  ',
+        ' ██████╔╝██║██╗███████╗╚██████╔╝██║ ╚████║███████╗',
+        ' ╚═════╝ ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝',
         '', '', '',
     }
 end
@@ -25,7 +25,8 @@ require('dashboard').setup {
                 keymap = 'SPC e',
                 key_hl = 'Number',
                 action = ':Neotree toggle'
-            }, {
+            },
+            {
                 icon = '󰈞 ',
                 icon_hl = 'Title',
                 desc = 'Find files',
@@ -34,7 +35,18 @@ require('dashboard').setup {
                 keymap = 'SPC f f',
                 key_hl = 'Number',
                 action = ':Telescope find_files'
-            }, {
+            },
+            {
+                icon = ' ',
+                icon_hl = 'Title',
+                desc = 'Old files',
+                desc_hl = 'String',
+                key = 'o',
+                keymap = 'SPC f o',
+                key_hl = 'Number',
+                action = ':Telescope oldfiles'
+            },
+            {
                 icon = ' ',
                 icon_hl = 'Title',
                 desc = 'Find text',
@@ -43,7 +55,8 @@ require('dashboard').setup {
                 keymap = 'SPC f w',
                 key_hl = 'Number',
                 action = ':Telescope live_grep'
-            }, {
+            },
+            {
                 icon = ' ',
                 icon_hl = 'Title',
                 desc = 'Git Braches',
@@ -53,7 +66,6 @@ require('dashboard').setup {
                 key_hl = 'Number',
                 action = ':Telescope git_branches'
             }
-
         }
     }
 }

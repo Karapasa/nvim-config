@@ -5,8 +5,9 @@ class Test:
     pass
 
 def fuch(a: str):
-    """coment"""
+    """coment text"""
     return a
+
 
 
 def func(a:str, b:int) -> str:

@@ -1,6 +1,5 @@
 -- Common
 
-
 vim.keymap.set('n', '<leader>w', ":w<cr>", {desc="Save"}) 
 vim.keymap.set('n', '<leader>q', ":confirm q<cr>", {desc="Quit"}) 
 vim.keymap.set('n', '<leader>Q', ":confirm qall<cr>", {desc="Quit all"}) 
@@ -20,12 +19,32 @@ vim.keymap.set('n', '<leader>o', function()
 end, {desc="Neotree focus"})
 
 -- Comment
-vim.keymap.set('n', '<leader>/', '<esc><cmd>lua require("Comment.api").toggle.linewise()<cr>')
-vim.keymap.set('v', '<leader>/', '<esc><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>')
+vim.keymap.set('n', '<leader>/', '<esc><cmd>lua require("Comment.api").toggle.linewise()<cr>', {desc="Comment"})
+vim.keymap.set('v', '<leader>/', '<esc><cmd>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<cr>', {desc="Comment"})
 	
 -- Navigate tabs
-vim.keymap.set('n', ']t', function() vim.cmd.tabnext() end, {desc="Next Tab"})
-vim.keymap.set('n', '[t', function() vim.cmd.tabprevious() end, {desc="Previous Tab"})
+vim.keymap.set('n', '<Tab>', ":bnext<CR>", {desc="Next Tab"})
+vim.keymap.set('n', '<S-Tab>', ":bprev<CR>", {desc="Prev Tab"})
+vim.keymap.set('n', '<leader>bk', ":BufferLineMoveNext<CR>", {desc="Move Right Tab"})
+vim.keymap.set('n', '<leader>bj', ":BufferLineMovePrev<CR>", {desc="Move left Tab"})
+vim.keymap.set('n', '<leader>bb', ":BufferLinePick<CR>", {desc="Move left Tab"})
+
+-- Telescope
+local builtin = require('telescope.builtin')
+
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', "<leader>fo", builtin.oldfiles, {})
+vim.keymap.set('n', '<leader>fw', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
+vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
+vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
+vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols, {silent = true})
+vim.keymap.set('n', '<leader>ld', builtin.diagnostics, {noremap = true, silent = true})
+vim.keymap.set('n', '<leader>lR', builtin.lsp_references, {noremap = true, silent = true})
+vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {noremap = true, silent = true})
 
 -- GitSigns
 vim.keymap.set('n', "]g", function() require("gitsigns").next_hunk() end, {desc = "Next Git hunk"})
@@ -35,25 +54,24 @@ vim.keymap.set("n", "<leader>gL", function() require("gitsigns").blame_line { fu
 vim.keymap.set("n", "<leader>gp", function() require("gitsigns").preview_hunk() end, {desc = "Preview Git hunk"})
 vim.keymap.set("n", "<leader>gh", function() require("gitsigns").reset_hunk() end, {desc = "Reset Git hunk"})
 vim.keymap.set("n", "<leader>gr", function() require("gitsigns").reset_buffer() end, {desc = "Reset Git buffer"})
-vim.keymap.set("n", "<leader>gs", function() require("gitsigns").stage_hunk() end, {desc = "Stage Git hunk"})
-vim.keymap.set("n", "<leader>gS", function() require("gitsigns").stage_buffer() end, {desc = "Stage Git buffer"})
-vim.keymap.set("n", "<leader>gu", function() require("gitsigns").undo_stage_hunk() end, {desc = "Unstage Git hunk"})
-vim.keymap.set("n", "<leader>gd", function() require("gitsigns").diffthis() end, {desc = "View Git diff"})
+vim.keymap.set("n", "<leader>gD", function() require("gitsigns").diffthis() end, {desc = "View Git diff"})
 
--- SymbolsOutline
-vim.keymap.set("n", "<leader>lS", function() require("aerial").toggle() end, {desc = "Symbols outline"})
 
+-- Visual Block --
+-- Moving text
 local opts = {noremap=true, silent=true}
-
 vim.api.nvim_set_keymap("v", "<", "<gv", opts)
 vim.api.nvim_set_keymap("v", ">", ">gv", opts)
--- Move text up and down
 vim.api.nvim_set_keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 vim.api.nvim_set_keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 vim.api.nvim_set_keymap("v", "p", '"_dP', opts)
--- Visual Block --
--- Move text up and down
 vim.api.nvim_set_keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 vim.api.nvim_set_keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 vim.api.nvim_set_keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 vim.api.nvim_set_keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
+-- Improved Terminal Navigation
+vim.api.nvim_set_keymap("n", "<C-h>", "<cmd>wincmd h<cr>", {desc="Terminal left window navigation"})
+vim.api.nvim_set_keymap("n", "<C-j>", "<cmd>wincmd j<cr>", {desc="Terminal down window navigation"})
+vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>wincmd k<cr>", {desc="Terminal up window navigation"})
+vim.api.nvim_set_keymap("n", "<C-l>", "<cmd>wincmd l<cr>", {desc="Terminal right window navigation"})

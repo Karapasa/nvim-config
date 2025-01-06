@@ -5,11 +5,10 @@ require('lualine').setup {
     component_separators = "|",
     section_separators = "",
     disabled_filetypes = {
-      statusline = {"neo-tree", "dashboard", "aerial", "Outline"},
+      statusline = {"neo-tree", "dashboard", "aerial", "Outline", "trouble"},
       winbar = {},
     },
-    ignore_focus = { "neo-tree", "dashboard", "Outline", "aerial" },
-    -- ignore_focus = {},
+    ignore_focus = { "neo-tree", "dashboard", "Outline", "aerial", "trouble"},
     always_divide_middle = true,
     always_show_tabline = true,
     globalstatus = false,

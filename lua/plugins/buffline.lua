@@ -12,15 +12,14 @@ require("bufferline").setup {
             {
                 filetype = "neo-tree",
                 text = "NeoTree",
-                separator = true,
+                separator = "",
                 padding = 0
             }
         },
         diagnostics = false,
         indicator = {
-            icon = '', -- this should be omitted if indicator style is not 'icon'
+            icon = '',
             style = 'icon'
         },
-        -- separator_style = "slope"
     }
 }
