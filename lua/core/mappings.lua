@@ -42,9 +42,14 @@ vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
 vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols, {silent = true})
-vim.keymap.set('n', '<leader>ld', builtin.diagnostics, {noremap = true, silent = true})
-vim.keymap.set('n', '<leader>lR', builtin.lsp_references, {noremap = true, silent = true})
-vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {noremap = true, silent = true})
+vim.keymap.set('n', '<leader>lD', builtin.diagnostics, {noremap = true, silent = true})
+vim.keymap.set('n', '<leader>lr', builtin.lsp_references, {noremap = true, silent = true})
+vim.keymap.set('n', 'gd', builtin.lsp_definitions, {noremap = true, silent = true})
+
+-- LSP
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>ld', vim.diagnostic.setloclist)
 
 -- GitSigns
 vim.keymap.set('n', "]g", function() require("gitsigns").next_hunk() end, {desc = "Next Git hunk"})
@@ -75,3 +80,4 @@ vim.api.nvim_set_keymap("n", "<C-h>", "<cmd>wincmd h<cr>", {desc="Terminal left 
 vim.api.nvim_set_keymap("n", "<C-j>", "<cmd>wincmd j<cr>", {desc="Terminal down window navigation"})
 vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>wincmd k<cr>", {desc="Terminal up window navigation"})
 vim.api.nvim_set_keymap("n", "<C-l>", "<cmd>wincmd l<cr>", {desc="Terminal right window navigation"})
+

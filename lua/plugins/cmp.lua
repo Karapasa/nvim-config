@@ -1,5 +1,6 @@
 local cmp = require 'cmp'
 
+
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -31,11 +32,31 @@ cmp.setup({
             end
         end, {"i", "s"})
     }),
-})
+    formatting = {
+        fields = {"abbr", "kind", "menu"},
+        format = function(entry, vim_item)
+            vim_item.kind = string.format('%s', vim_item.kind)
+            vim_item.menu = ({
+                nvim_lsp = "[Lsp]",
+                luasnip = "[Snip]",
+                buffer = "[File]",
+                path = "[Path]",
+            })[entry.source.name]
 
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-        {name = 'cmp_git'} -- You can specify the `cmp_git` source if you were installed it.
-    }, {{name = 'buffer'}})
+            return vim_item
+        end
+    },
+    sources = {
+      { name = "nvim_lsp", priority = 1000 },
+      { name = "luasnip", priority = 750 },
+      { name = "buffer", priority = 500 },
+      { name = "path", priority = 250 },
+    },
+})
+    -- `/` cmdline setup.
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
 })
