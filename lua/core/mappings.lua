@@ -50,6 +50,11 @@ vim.keymap.set('n', 'gd', builtin.lsp_definitions, {noremap = true, silent = tru
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>ld', vim.diagnostic.setloclist)
+vim.keymap.set('n',"gl", function() vim.diagnostic.open_float() end, {desc = "Hover diagnostics"})
+
+-- Black Macchiato
+vim.keymap.set('n', '<leader>lf', ":BlackMacchiato<CR>", {desc="Format line"})
+vim.keymap.set('v', '<leader>lf', ":BlackMacchiato<CR>", {desc="Format range"})
 
 -- GitSigns
 vim.keymap.set('n', "]g", function() require("gitsigns").next_hunk() end, {desc = "Next Git hunk"})
@@ -59,7 +64,7 @@ vim.keymap.set("n", "<leader>gL", function() require("gitsigns").blame_line { fu
 vim.keymap.set("n", "<leader>gp", function() require("gitsigns").preview_hunk() end, {desc = "Preview Git hunk"})
 vim.keymap.set("n", "<leader>gh", function() require("gitsigns").reset_hunk() end, {desc = "Reset Git hunk"})
 vim.keymap.set("n", "<leader>gr", function() require("gitsigns").reset_buffer() end, {desc = "Reset Git buffer"})
-vim.keymap.set("n", "<leader>gD", function() require("gitsigns").diffthis() end, {desc = "View Git diff"})
+vim.keymap.set("n", "<leader>gd", function() require("gitsigns").diffthis() end, {desc = "View Git diff"})
 
 
 -- Visual Block --

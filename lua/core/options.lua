@@ -83,3 +83,9 @@ autocmd("TextYankPost", {
   pattern = "*",
   callback = function() vim.highlight.on_yank() end,
 })
+
+autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})

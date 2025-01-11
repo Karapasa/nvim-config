@@ -47,6 +47,18 @@ require('Comment').setup {
 require('gitsigns').setup()
 require("luasnip.loaders.from_vscode").lazy_load()
 require("mason").setup()
+require("mason-lspconfig").setup()
+
+require('lint').linters_by_ft = {
+  python = {'flake8'},
+}
+require("conform").setup({
+  formatters_by_ft = {
+    lua = { "stylua" },
+    python = { "isort", "ruff" },
+  },
+})
+
 require('telescope').setup({
     defaults = {
         path_display = { "truncate" },
