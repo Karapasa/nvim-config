@@ -6,7 +6,7 @@ require('gitsigns').setup(
 require("luasnip.loaders.from_vscode").lazy_load()
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua-language-server", "pyright", "json-lsp", "emmet-ls", "css-lsp", "sqlls", "html-lsp" },
+    ensure_installed = { "lua_ls", "pyright", "jsonls", "emmet-ls", "css-lsp", "sqlls", "html-lsp" },
 })
 require("scrollbar").setup({
   excluded_filetypes = { "terminal", "neo-tree", "dashboard", "Outline", "trouble"},
