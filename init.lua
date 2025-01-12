@@ -13,6 +13,7 @@ require("plugins.lsp")
 require("plugins.cmp")
 require("plugins.lualine")
 require("plugins.whichkey")
+require("plugins.codeium")
 
 --Autocmds
 require("core.autocmds")
