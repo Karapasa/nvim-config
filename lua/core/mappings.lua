@@ -76,7 +76,7 @@ vim.keymap.set("n", "<leader>gr", function() require("gitsigns").reset_buffer() 
 vim.keymap.set("n", "<leader>gd", function() require("gitsigns").diffthis() end, {desc = "View Git diff"})
 
 --LazyGit
-vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", {desc = "LazyGit"})
+vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", {desc = "LazyGit", noremap=true, silent=true})
 
 
 --Trouble
