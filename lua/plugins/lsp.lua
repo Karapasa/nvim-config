@@ -68,6 +68,13 @@ require("lspconfig").pyright.setup({
             analysis = {
                 typeCheckingMode = "basic",
                 diagnosticMode = "workspace",
+                -- analyzeUnannotatedFunctions = false,
+                strictParameterNoneValue = false,
+                enableTypeIgnoreComments = false,
+                reportMissingModuleSource = "none",
+                reportInvalidTypeForm = "none",
+                reportMissingImports = "none",
+                reportUndefinedVariable = "none",
                 -- ignore = { '*' },
             },
         },

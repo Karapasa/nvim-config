@@ -6,7 +6,6 @@ require('gitsigns').setup(
 require("luasnip.loaders.from_vscode").lazy_load()
 require("mason").setup()
 require("mason-lspconfig").setup()
-require("codeium").setup()
 require("scrollbar").setup({
   excluded_filetypes = { "terminal", "neo-tree", "dashboard", "aerial", "Outline", "trouble"},
 })
