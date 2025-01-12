@@ -13,7 +13,7 @@ require("neo-tree").setup({
   auto_clean_after_session_restore = true,
   close_if_last_window = true,
   enable_git_status = true,
-  enable_diagnostics = true,
+  enable_diagnostics = false,
   sources = { "filesystem", "buffers", "git_status"},
   source_selector = {
     winbar = true,

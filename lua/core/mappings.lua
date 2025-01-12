@@ -8,6 +8,9 @@ vim.keymap.set('n', '<C-q>', ":qa!<cr>", {desc="Force quit"})
 vim.keymap.set('n', '|', ":vsplit<cr>", {desc="Vertical split"}) 
 vim.keymap.set('n', '\\', ":split<cr>", {desc="Horizontal split"}) 
 
+-- Flash
+vim.keymap.set({"n","x","o"}, "s", function() require("flash").jump() end, {desc = "Flash"})
+
 -- NeoTree
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', {desc="Neotree toggle"})
 vim.keymap.set('n', '<leader>o', function()
@@ -52,9 +55,15 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>ld', vim.diagnostic.setloclist)
 vim.keymap.set('n',"gl", function() vim.diagnostic.open_float() end, {desc = "Hover diagnostics"})
 
+-- Formatting
+vim.api.nvim_create_user_command("Format", function () require('conform').format() end, {})
+vim.api.nvim_create_user_command("FormatImports", function () require('conform').format({formatters={"isort"}}) end, {})
+vim.keymap.set('n', '<leader>lf', ":Format<CR>", {desc="Format"})
+vim.keymap.set('n', '<leader>lfi', ":FormatImports<CR>", {desc="Format Imports"})
 -- Black Macchiato
-vim.keymap.set('n', '<leader>lf', ":BlackMacchiato<CR>", {desc="Format line"})
-vim.keymap.set('v', '<leader>lf', ":BlackMacchiato<CR>", {desc="Format range"})
+vim.keymap.set('n', '<leader>lfl', ":BlackMacchiato<CR><CR>", {desc="Format line"})
+vim.keymap.set('v', '<leader>lfr', ":BlackMacchiato<CR><CR>", {desc="Format range"})
+-- vim.keymap.set('n', '<Leader>lF', function() vim.lsp.buf.format { async = true } end, opts) in lsp.lua
 
 -- GitSigns
 vim.keymap.set('n', "]g", function() require("gitsigns").next_hunk() end, {desc = "Next Git hunk"})
@@ -65,6 +74,16 @@ vim.keymap.set("n", "<leader>gp", function() require("gitsigns").preview_hunk() 
 vim.keymap.set("n", "<leader>gh", function() require("gitsigns").reset_hunk() end, {desc = "Reset Git hunk"})
 vim.keymap.set("n", "<leader>gr", function() require("gitsigns").reset_buffer() end, {desc = "Reset Git buffer"})
 vim.keymap.set("n", "<leader>gd", function() require("gitsigns").diffthis() end, {desc = "View Git diff"})
+
+--LazyGit
+vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", {desc = "LazyGit"})
+
+
+--Trouble
+vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>",{desc = "Diagnostics (Trouble)"})
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",{desc = "Buffer Diagnostics (Trouble)"})
+vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>",{desc = "Symbols (Trouble)"})
+vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>",{desc = "Location List (Trouble)"})
 
 
 -- Visual Block --
@@ -86,3 +105,15 @@ vim.api.nvim_set_keymap("n", "<C-j>", "<cmd>wincmd j<cr>", {desc="Terminal down 
 vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>wincmd k<cr>", {desc="Terminal up window navigation"})
 vim.api.nvim_set_keymap("n", "<C-l>", "<cmd>wincmd l<cr>", {desc="Terminal right window navigation"})
 
+-- Codeium
+vim.keymap.set('i', '<A-i>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+vim.keymap.set('i', '<A-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+vim.keymap.set('i', '<A-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+vim.keymap.set('i', '<A-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+
+
+-- Multicursor
+vim.keymap.set({"n", "i", "x"},"<C-Up>","<Cmd>MultipleCursorsAddUp<CR>", {desc = "Add cursor and move up" })
+vim.keymap.set({"n", "i", "x"},"<C-Down>","<Cmd>MultipleCursorsAddDown<CR>",{desc = "Add cursor and move down"})
+vim.keymap.set({"n", "i"},"<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>",{desc = "Add or remove cursor" })
+vim.keymap.set({"n", "x"},"<Leader>a","<Cmd>MultipleCursorsAddMatches<CR>",{desc = "Add cursors to cword"})

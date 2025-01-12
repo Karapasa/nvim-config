@@ -1,5 +1,21 @@
-
-require("nvim-autopairs").setup {}
+require("nvim-autopairs").setup()
+require("nvim-surround").setup()
+require('gitsigns').setup(
+    require("scrollbar.handlers.gitsigns").setup()
+)
+require("luasnip.loaders.from_vscode").lazy_load()
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("codeium").setup()
+require("scrollbar").setup({
+  excluded_filetypes = { "terminal", "neo-tree", "dashboard", "aerial", "Outline", "trouble"},
+})
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
+}
+require('Comment').setup {
+  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+}
 require('nvim-ts-autotag').setup({
   opts = {
     enable_close = true, -- Auto close tags
@@ -12,52 +28,52 @@ require('nvim-ts-autotag').setup({
     }
   }
 })
+require("smartcolumn").setup({
+    colorcolumn = "120",
+    disabled_filetypes = { "help", "dashboard" },
+})
 
 require("bufferline").setup {
     options = {
-        numbers = "none",
-        buffer_close_icon = 'x',
+        buffer_close_icon = '󰅖',
+        modified_icon = '●',
+        close_icon = '',
+        left_trunc_marker = '',
+        right_trunc_marker = '',
         close_command = "Bdelete! %d",
         right_mouse_command = "Bdelete! %d",
         left_mouse_command = "buffer %d",
-        max_name_length = 30,
-        
+        max_prefix_length = 30,
+        truncate_names = false,
+        show_buffer_icons = true,
+        show_buffer_close_icons = true,
+        show_close_icon = true,
+        show_tab_indicators = true,
+        color_icons = true,
+        persist_buffer_sort = true,
+        enforce_regular_tabs = false,
+        always_show_bufferline = true,
         mode = 'buffers',
         offsets = {
             {
                 filetype = "neo-tree",
                 text = "NeoTree",
                 separator = "",
-                padding = 0
+                padding = 1
             }
         },
         diagnostics = false,
-        indicator = {
-            icon = '',
-            style = 'icon'
-        },
     }
-}
-require('ts_context_commentstring').setup {
-  enable_autocmd = false,
-}
-require('Comment').setup {
-  pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-}
-require('gitsigns').setup()
-require("luasnip.loaders.from_vscode").lazy_load()
-require("mason").setup()
-require("mason-lspconfig").setup()
-
-require('lint').linters_by_ft = {
-  python = {'flake8'},
 }
 require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua" },
-    python = { "isort", "ruff" },
+    python = { "black", "isort" },
   },
 })
+require('lint').linters_by_ft = {
+  python = {'flake8'},
+}
 
 require('telescope').setup({
     defaults = {
@@ -84,5 +100,5 @@ function _G.set_terminal_keymaps()
     vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
     vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 end
-
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
