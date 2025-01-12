@@ -92,6 +92,10 @@ require("lspconfig").lua_ls.setup({
 require("lspconfig").emmet_ls.setup({
     capabilities = capabilities,
 })
+-- Sql
+require("lspconfig").sqlls.setup({
+    capabilities = capabilities,
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),

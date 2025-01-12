@@ -106,16 +106,7 @@ vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>wincmd k<cr>", {desc="Terminal up wi
 vim.api.nvim_set_keymap("n", "<C-l>", "<cmd>wincmd l<cr>", {desc="Terminal right window navigation"})
 
 -- Codeium
--- vim.keymap.set('i', '<A-i>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
--- vim.keymap.set('i', '<A-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
--- vim.keymap.set('i', '<A-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
--- vim.keymap.set('i', '<A-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
-
--- vim.keymap.set('i', '<A-i>', function() require('codeium.virtual_text').complete() end, { expr = true, silent = true })
--- vim.keymap.set('i', '<A-;>', function() re end, { expr = true, silent = true })
--- vim.keymap.set('i', '<A-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
--- vim.keymap.set('i', '<A-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
-
+-- in Codeium.lua
 
 -- Multicursor
 vim.keymap.set({"n", "i", "x"},"<C-Up>","<Cmd>MultipleCursorsAddUp<CR>", {desc = "Add cursor and move up" })
