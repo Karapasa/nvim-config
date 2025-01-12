@@ -1,12 +1,12 @@
 -- Common
 
-vim.keymap.set('n', '<leader>w', ":w<cr>", {desc="Save"}) 
-vim.keymap.set('n', '<leader>q', ":confirm q<cr>", {desc="Quit"}) 
-vim.keymap.set('n', '<leader>Q', ":confirm qall<cr>", {desc="Quit all"}) 
-vim.keymap.set('n', '<C-s>', ":w!<cr>", {desc="Force write"}) 
-vim.keymap.set('n', '<C-q>', ":qa!<cr>", {desc="Force quit"}) 
-vim.keymap.set('n', '|', ":vsplit<cr>", {desc="Vertical split"}) 
-vim.keymap.set('n', '\\', ":split<cr>", {desc="Horizontal split"}) 
+vim.keymap.set('n', '<leader>w', ":w<cr>", {desc="Save"})
+vim.keymap.set('n', '<leader>q', ":confirm q<cr>", {desc="Quit"})
+vim.keymap.set('n', '<leader>Q', ":confirm qall<cr>", {desc="Quit all"})
+vim.keymap.set('n', '<C-s>', ":w!<cr>", {desc="Force write"})
+vim.keymap.set('n', '<C-q>', ":qa!<cr>", {desc="Force quit"})
+vim.keymap.set('n', '|', ":vsplit<cr>", {desc="Vertical split"})
+vim.keymap.set('n', '\\', ":split<cr>", {desc="Horizontal split"})
 
 -- Flash
 vim.keymap.set({"n","x","o"}, "s", function() require("flash").jump() end, {desc = "Flash"})
@@ -30,29 +30,29 @@ vim.keymap.set('n', '<Tab>', ":bnext<CR>", {desc="Next Tab"})
 vim.keymap.set('n', '<S-Tab>', ":bprev<CR>", {desc="Prev Tab"})
 vim.keymap.set('n', '<leader>bk', ":BufferLineMoveNext<CR>", {desc="Move Right Tab"})
 vim.keymap.set('n', '<leader>bj', ":BufferLineMovePrev<CR>", {desc="Move left Tab"})
-vim.keymap.set('n', '<leader>bb', ":BufferLinePick<CR>", {desc="Move left Tab"})
+vim.keymap.set('n', '<leader>bb', ":BufferLinePick<CR>", {desc="Buffer Pick"})
 
 -- Telescope
 local builtin = require('telescope.builtin')
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', "<leader>fo", builtin.oldfiles, {})
-vim.keymap.set('n', '<leader>fw', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
-vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
-vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
-vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols, {silent = true})
-vim.keymap.set('n', '<leader>lD', builtin.diagnostics, {noremap = true, silent = true})
-vim.keymap.set('n', '<leader>lr', builtin.lsp_references, {noremap = true, silent = true})
-vim.keymap.set('n', 'gd', builtin.lsp_definitions, {noremap = true, silent = true})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc="Find files"})
+vim.keymap.set('n', "<leader>fo", builtin.oldfiles, {desc="Old Files"})
+vim.keymap.set('n', '<leader>fw', builtin.live_grep, {desc="Find words"})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc="Find buffers"})
+vim.keymap.set('n', '<leader>fc', builtin.grep_string, {desc="Find word under cursor"})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc="Help tags"})
+vim.keymap.set('n', '<leader>gb', builtin.git_branches, {desc="Git branches"})
+vim.keymap.set('n', '<leader>gc', builtin.git_commits, {desc="Git commits"})
+vim.keymap.set('n', '<leader>gs', builtin.git_status, {desc="Git status"})
+vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols, {silent = true, desc="Document symbols"})
+vim.keymap.set('n', '<leader>lD', builtin.diagnostics, {noremap = true, silent = true, desc="Diagnostics"})
+vim.keymap.set('n', '<leader>lr', builtin.lsp_references, {noremap = true, silent = true, desc="References"})
+vim.keymap.set('n', 'gd', builtin.lsp_definitions, {noremap = true, silent = true, desc="Definitions"})
 
 -- LSP
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>ld', vim.diagnostic.setloclist)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {desc="Prev diagnostic"})
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {desc="Next diagnostic"})
+vim.keymap.set('n', '<leader>ld', vim.diagnostic.setloclist, {desc="Show list diagnostic's"})
 vim.keymap.set('n',"gl", function() vim.diagnostic.open_float() end, {desc = "Hover diagnostics"})
 
 -- Formatting
@@ -82,7 +82,7 @@ vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", {desc = "LazyGit", noremap
 --Trouble
 vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>",{desc = "Diagnostics (Trouble)"})
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",{desc = "Buffer Diagnostics (Trouble)"})
-vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>",{desc = "Symbols (Trouble)"})
+vim.keymap.set("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>",{desc = "Symbols (Trouble)"})
 vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>",{desc = "Location List (Trouble)"})
 
 

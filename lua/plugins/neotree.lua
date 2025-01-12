@@ -105,6 +105,7 @@ require("neo-tree").setup({
           ".idea",
           ".pytest_cache",
           ".mypy_cache",
+          ".ruff_cache",
         },
       }
     },
