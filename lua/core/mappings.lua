@@ -88,6 +88,12 @@ vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>",{desc = 
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",{desc = "Buffer Diagnostics (Trouble)"})
 vim.keymap.set("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>",{desc = "Symbols (Trouble)"})
 vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>",{desc = "Location List (Trouble)"})
+--
+--Diffview
+vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory %<cr>",{desc = "File history"})
+vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>", {desc="Diffview Close"})
+vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>",{desc = "Diffview Open"})
+vim.keymap.set("n", "<leader>dd", "<cmd>DiffViewOpen origin/develop...HEAD<cr>",{desc = "Diffview develop"})
 
 
 -- Visual Block --

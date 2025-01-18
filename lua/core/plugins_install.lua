@@ -31,6 +31,7 @@ return {
     { 'smbl64/vim-black-macchiato' },
     { 'stevearc/conform.nvim' },
     { 'petertriho/nvim-scrollbar' },
+    { 'sindrets/diffview.nvim' },
     { 'Wansmer/treesj', keys = { '<space>m' }, dependencies = { 'nvim-treesitter/nvim-treesitter' }},
     { "Exafunction/codeium.nvim", event = 'BufEnter', dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" } },
     {

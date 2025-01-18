@@ -6,4 +6,5 @@ wk.add({
   { "<leader>lf", group = "Formatting" },
   { "<leader>x", group = "Trouble" },
   { "<leader>b", group = "Buffers" },
+  { "<leader>d", group = "Diffview" },
 })
