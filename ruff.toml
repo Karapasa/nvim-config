@@ -1,0 +1,129 @@
+include = ["*.py", "**pyproject.toml"]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+line-length = 119
+indent-width = 4
+target-version = "py310"
+preview = true
+
+
+[lint]
+select = [
+    "F", # Pyflakes
+    "E", # Pycodestyle
+    "W", # Pycodestyle
+    "UP", # Pyupgrade
+    "ASYNC", # flake8-async
+    "S", # flake8-bandit
+    "BLE", # flake8-blind-except-ble
+    "B", # flake8-bugbear
+    "COM", # flake8-commas
+    "C4", # flake8-comprehensions
+    "DTZ", # flake8-datetimez
+    "DJ", # flake8-django
+    "ISC", # flake8-implicit-str-concat
+    "G", # flake8-logging-format
+    "PIE", # flake8-pie
+    "T20", # flake8-print
+    "PT", # flake8-pytest-style
+    "Q", # flake8-quotes
+    "RSE", # flake8-raise
+    "RET", # flake8-return
+    "SLF", # flake8-self
+    "SLOT", # flake8-slots
+    "SIM", # flake8-simplify
+    "TID", # flake8-tidy-imports
+    "ARG", # flake8-unused-arguments
+    "ERA", # eradicate
+    "PL", # Pylint
+    "TRY", # tryceratops
+    "FLY", # flynt
+    "PERF", # Perflint
+    "RUF", # Ruff
+]
+ignore = [
+    "W292",
+    "W505",
+    "UP045",
+    "S101",
+    "COM812",
+    "Q000",
+    "RET504",
+    "TRY002",
+    "RUF002",
+    "RUF003",
+    "RUF012",
+    "UP037",
+]
+exclude = [
+    "*/migrations/*",
+    "*/fixtures/*",
+    "*/settings/*",
+    "*/locale/*",
+]
+
+[lint.extend-per-file-ignores]
+"tests/*" = [
+    "PLR0913",
+    "PLR2004",
+    "PT009", # not all tests pytest :/
+    "ARG001", # не подходят при использовании фикстур в pytest тестах
+
+]
+
+[lint.pep8-naming]
+extend-ignore-names = [
+    "Model",
+]
+
+[lint.flake8-unused-arguments]
+ignore-variadic-names = true
+
+[lint.pylint]
+max-public-methods = 35
+max-returns = 10
+max-positional-args = 5
+
+[format]
+quote-style = "preserve"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+
+[lint.isort]
+section-order = ["future", "standard-library", "third-party", "django", "first-party", "local-folder"]
+combine-as-imports = true
+
+[lint.isort.sections]
+# Group all Django imports into a separate section.
+"django" = ["django"]
+

@@ -1,12 +1,13 @@
 require("nvim-autopairs").setup()
 require("nvim-surround").setup()
+require('treesj').setup()
 require('gitsigns').setup(
     require("scrollbar.handlers.gitsigns").setup()
 )
 require("luasnip.loaders.from_vscode").lazy_load()
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "pyright", "jsonls", "emmet_ls", "cssls", "sqlls", "html" },
+    ensure_installed = { "lua_ls", "jsonls", "emmet_ls", "cssls", "sqlls", "html", "pyright", "ruff" },
 })
 require("scrollbar").setup({
   excluded_filetypes = { "terminal", "neo-tree", "dashboard", "Outline", "trouble"},
@@ -31,7 +32,7 @@ require('nvim-ts-autotag').setup({
 })
 require("smartcolumn").setup({
     colorcolumn = "120",
-    disabled_filetypes = { "help", "dashboard" },
+    disabled_filetypes = { "help", "dashboard", "trouble" },
 })
 
 require("bufferline").setup {
@@ -69,12 +70,10 @@ require("bufferline").setup {
 require("conform").setup({
   formatters_by_ft = {
     lua = { "stylua" },
-    python = { "black", "isort" },
+    python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
   },
 })
-require('lint').linters_by_ft = {
-  python = {'flake8'},
-}
+
 
 require('telescope').setup({
     defaults = {

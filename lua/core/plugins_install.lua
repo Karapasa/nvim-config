@@ -30,8 +30,8 @@ return {
     { "saadparwaiz1/cmp_luasnip" },
     { 'smbl64/vim-black-macchiato' },
     { 'stevearc/conform.nvim' },
-    { 'mfussenegger/nvim-lint' },
-    { 'petertriho/nvim-scrollbar'},
+    { 'petertriho/nvim-scrollbar' },
+    { 'Wansmer/treesj', keys = { '<space>m' }, dependencies = { 'nvim-treesitter/nvim-treesitter' }},
     { "Exafunction/codeium.nvim", event = 'BufEnter', dependencies = { "nvim-lua/plenary.nvim", "hrsh7th/nvim-cmp" } },
     {
         "nvim-neo-tree/neo-tree.nvim",

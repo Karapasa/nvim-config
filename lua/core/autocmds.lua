@@ -8,9 +8,3 @@ autocmd("TextYankPost", {
   pattern = "*",
   callback = function() vim.highlight.on_yank() end,
 })
-
-autocmd({ "BufEnter", "BufWritePost" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})

@@ -7,6 +7,7 @@ vim.keymap.set('n', '<C-s>', ":w!<cr>", {desc="Force write"})
 vim.keymap.set('n', '<C-q>', ":qa!<cr>", {desc="Force quit"})
 vim.keymap.set('n', '|', ":vsplit<cr>", {desc="Vertical split"})
 vim.keymap.set('n', '\\', ":split<cr>", {desc="Horizontal split"})
+vim.keymap.set('n', '<leader>x', ":Bdelete<CR>", {desc="Close buffer"})
 
 -- Flash
 vim.keymap.set({"n","x","o"}, "s", function() require("flash").jump() end, {desc = "Flash"})
@@ -56,10 +57,13 @@ vim.keymap.set('n', '<leader>ld', vim.diagnostic.setloclist, {desc="Show list di
 vim.keymap.set('n',"gl", function() vim.diagnostic.open_float() end, {desc = "Hover diagnostics"})
 
 -- Formatting
-vim.api.nvim_create_user_command("Format", function () require('conform').format() end, {})
-vim.api.nvim_create_user_command("FormatImports", function () require('conform').format({formatters={"isort"}}) end, {})
-vim.keymap.set('n', '<leader>lf', ":Format<CR>", {desc="Format"})
+vim.api.nvim_create_user_command("FormatRuff", function () require('conform').format({formatters={"ruff_format"}}) end, {})
+vim.api.nvim_create_user_command("FormatLintErrors", function () require('conform').format({formatters={"ruff_fix"}}) end, {})
+vim.api.nvim_create_user_command("FormatImports", function () require('conform').format({formatters={"ruff_organize_imports"}}) end, {})
+vim.keymap.set('n', '<leader>lff', ":FormatRuff<CR>", {desc="Format Ruff"})
 vim.keymap.set('n', '<leader>lfi', ":FormatImports<CR>", {desc="Format Imports"})
+vim.keymap.set('n', '<leader>lfe', ":FormatLintErrors<CR>", {desc="Format Lint Errors"})
+vim.keymap.set('n', '<leader>lfd', ":2TermExec cmd=\"ruff check --diff % \" direction=float<CR>", {desc="Format Show Diff"})
 -- Black Macchiato
 vim.keymap.set('n', '<leader>lfl', ":BlackMacchiato<CR><CR>", {desc="Format line"})
 vim.keymap.set('v', '<leader>lfr', ":BlackMacchiato<CR><CR>", {desc="Format range"})
@@ -109,7 +113,10 @@ vim.api.nvim_set_keymap("n", "<C-l>", "<cmd>wincmd l<cr>", {desc="Terminal right
 -- in Codeium.lua
 
 -- Multicursor
-vim.keymap.set({"n", "i", "x"},"<C-Up>","<Cmd>MultipleCursorsAddUp<CR>", {desc = "Add cursor and move up" })
-vim.keymap.set({"n", "i", "x"},"<C-Down>","<Cmd>MultipleCursorsAddDown<CR>",{desc = "Add cursor and move down"})
+vim.keymap.set({"n", "i", "x"},"<A-Up>","<Cmd>MultipleCursorsAddUp<CR>", {desc = "Add cursor and move up" })
+vim.keymap.set({"n", "i", "x"},"<A-Down>","<Cmd>MultipleCursorsAddDown<CR>",{desc = "Add cursor and move down"})
 vim.keymap.set({"n", "i"},"<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<CR>",{desc = "Add or remove cursor" })
 vim.keymap.set({"n", "x"},"<Leader>a","<Cmd>MultipleCursorsAddMatches<CR>",{desc = "Add cursors to cword"})
+
+
+

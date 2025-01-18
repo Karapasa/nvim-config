@@ -43,8 +43,6 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
     border = "rounded",
 })
 
---
---
 -- CSS
 require("lspconfig").cssls.setup({
     capabilities = capabilities,
@@ -66,24 +64,20 @@ require("lspconfig").pyright.setup({
         },
         python = {
             analysis = {
-                typeCheckingMode = "basic",
-                diagnosticMode = "workspace",
-                -- analyzeUnannotatedFunctions = false,
-                strictParameterNoneValue = false,
-                enableTypeIgnoreComments = false,
-                reportMissingModuleSource = "none",
-                reportInvalidTypeForm = "none",
-                reportMissingImports = "none",
-                reportUndefinedVariable = "none",
-                -- ignore = { '*' },
+                ignore = { '*' },
             },
         },
     },
 })
--- -- Ruff
--- require("lspconfig").ruff.setup({
---     capabilities = capabilities,
--- })
+--Ruff
+require("lspconfig").ruff.setup({
+    capabilities = capabilities,
+    init_options = {
+      settings = {
+        configuration = "~/.config/nvim/ruff.toml",
+      },
+    },
+})
 -- Lua
 require("lspconfig").lua_ls.setup({
     capabilities = capabilities,
