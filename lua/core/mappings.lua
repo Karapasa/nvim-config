@@ -70,15 +70,19 @@ vim.keymap.set('v', '<leader>lfr', ":BlackMacchiato<CR><CR>", {desc="Format rang
 -- vim.keymap.set('n', '<Leader>lF', function() vim.lsp.buf.format { async = true } end, opts) in lsp.lua
 
 -- GitSigns
-vim.keymap.set('n', "]g", function() require("gitsigns").next_hunk() end, {desc = "Next Git hunk"})
-vim.keymap.set("n", "[g", function() require("gitsigns").prev_hunk() end, {desc = "Previous Git hunk"})
-vim.keymap.set("n", "<leader>gl", function() require("gitsigns").blame_line() end, {desc = "View Git blame"})
-vim.keymap.set("n", "<leader>gL", function() require("gitsigns").blame_line { full = true } end, {desc = "View full Git blame"})
-vim.keymap.set("n", "<leader>gp", function() require("gitsigns").preview_hunk() end, {desc = "Preview Git hunk"})
-vim.keymap.set("n", "<leader>gh", function() require("gitsigns").reset_hunk() end, {desc = "Reset Git hunk"})
-vim.keymap.set("n", "<leader>gr", function() require("gitsigns").reset_buffer() end, {desc = "Reset Git buffer"})
-vim.keymap.set("n", "<leader>gd", function() require("gitsigns").diffthis() end, {desc = "View Git diff"})
+vim.keymap.set('n', "]g", function() require("gitsigns").next_hunk() end, {desc = "Next hunk"})
+vim.keymap.set("n", "[g", function() require("gitsigns").prev_hunk() end, {desc = "Previous hunk"})
+vim.keymap.set("n", "<leader>gl", function() require("gitsigns").blame_line() end, {desc = "View blame"})
+vim.keymap.set("n", "<leader>gL", function() require("gitsigns").blame_line { full = true } end, {desc = "View full blame"})
+vim.keymap.set("n", "<leader>gp", function() require("gitsigns").preview_hunk() end, {desc = "Preview hunk"})
+vim.keymap.set("n", "<leader>gs", function() require("gitsigns").stage_hunk() end, {desc = "Stage hunk"})
+vim.keymap.set("n", "<leader>gh", function() require("gitsigns").reset_hunk() end, {desc = "Reset hunk"})
+vim.keymap.set("n", "<leader>gu", function() require("gitsigns").undo_stage_hunk() end, {desc = "Undo Stage hunk"})
+vim.keymap.set("n", "<leader>gb", function() require("gitsigns").stage_buffer() end, {desc = "Stage buffer"})
+vim.keymap.set("n", "<leader>gr", function() require("gitsigns").reset_buffer() end, {desc = "Reset buffer"})
+vim.keymap.set("n", "<leader>gd", function() require("gitsigns").diffthis() end, {desc = "View diff"})
 
+-- vim.keymap.set("n", "<leader>gr", function() require("gitsigns").reset_buffer() end, {desc = "Reset Git buffer"})
 --LazyGit
 vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", {desc = "LazyGit", noremap=true, silent=true})
 

@@ -18,6 +18,7 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
 vim.opt.foldmethod = "manual" -- folding set to "expr" for treesitter based folding
+vim.opt.fillchars = { eob = " " }
 vim.opt.history = 100
 vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
@@ -46,7 +47,7 @@ vim.opt.shortmess:append "sI"
 vim.opt.showtabline = 2 -- always show tabs
 vim.opt.laststatus = 2 -- hide statusline
 
-vim.wo.signcolumn = "yes"
+vim.wo.signcolumn = "auto:2"
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.wo.linebreak = true
