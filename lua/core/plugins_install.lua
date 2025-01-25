@@ -61,4 +61,16 @@ return {
             }
         },
     },
+    {
+        "mfussenegger/nvim-dap", dependencies = {
+            {
+                "jay-babu/mason-nvim-dap.nvim",
+                dependencies = { "nvim-dap" },
+                cmd = { "DapInstall", "DapUninstall" },
+            },
+            { "rcarriga/nvim-dap-ui", dependencies = {"nvim-dap", "nvim-neotest/nvim-nio"} },
+            { "rcarriga/cmp-dap", dependencies = { "nvim-cmp"} },
+        }
+    },
+    { "theHamsta/nvim-dap-virtual-text" },
 }

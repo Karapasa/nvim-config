@@ -90,4 +90,10 @@ require('telescope').setup({
 })
 
 require("toggleterm").setup {open_mapping = [[<F10>]]}
+require("dapui").setup()
+require("nvim-dap-virtual-text").setup({
+    enabled = true,
+    virt_text_pos = "eol",
+    highlight_changed_variables = true,
+})
 

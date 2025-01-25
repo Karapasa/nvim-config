@@ -47,7 +47,7 @@ vim.opt.shortmess:append "sI"
 vim.opt.showtabline = 2 -- always show tabs
 vim.opt.laststatus = 2 -- hide statusline
 
-vim.wo.signcolumn = "auto:2"
+vim.wo.signcolumn = "yes:2"
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.wo.linebreak = true

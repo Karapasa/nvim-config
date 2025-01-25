@@ -94,10 +94,10 @@ vim.keymap.set("n", "<leader>xs", "<cmd>Trouble symbols toggle focus=false<cr>",
 vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>",{desc = "Location List (Trouble)"})
 --
 --Diffview
-vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory %<cr>",{desc = "File history"})
-vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>", {desc="Diffview Close"})
-vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>",{desc = "Diffview Open"})
-vim.keymap.set("n", "<leader>dd", "<cmd>DiffViewOpen origin/develop...HEAD<cr>",{desc = "Diffview develop"})
+vim.keymap.set("n", "<leader>vh", "<cmd>DiffviewFileHistory %<cr>",{desc = "File history"})
+vim.keymap.set("n", "<leader>vc", "<cmd>DiffviewClose<cr>", {desc="Diffview Close"})
+vim.keymap.set("n", "<leader>vo", "<cmd>DiffviewOpen<cr>",{desc = "Diffview Open"})
+vim.keymap.set("n", "<leader>vd", "<cmd>DiffViewOpen origin/develop...HEAD<cr>",{desc = "Diffview develop"})
 
 
 -- Visual Block --
@@ -129,4 +129,8 @@ vim.keymap.set({"n", "i"},"<C-LeftMouse>", "<Cmd>MultipleCursorsMouseAddDelete<C
 vim.keymap.set({"n", "x"},"<Leader>a","<Cmd>MultipleCursorsAddMatches<CR>",{desc = "Add cursors to cword"})
 
 
-
+-- Dap
+vim.keymap.set("n", "<Leader>db","<cmd>lua require'dap'.toggle_breakpoint()<CR>",{desc = "Toggle Breakpoint"})
+vim.keymap.set("n", "<Leader>dx","<cmd>lua require'dap'.clear_breakpoints()<CR>",{desc = "Clear breakpoints"})
+vim.keymap.set("n", "<Leader>do","<cmd>lua require'dapui'.open()<cr>",{desc = "Open Dap UI"})
+vim.keymap.set("n", "<Leader>dc","<cmd>lua require'dapui'.close()<cr>",{desc = "Close Dap UI"})
