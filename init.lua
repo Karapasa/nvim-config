@@ -14,6 +14,9 @@ require("plugins.cmp")
 require("plugins.lualine")
 require("plugins.whichkey")
 require("plugins.codeium")
+require("plugins.mason-dap")
+require("plugins.dap-ui")
+require("plugins.cmp-dap")
 
 --Autocmds
 require("core.autocmds")
